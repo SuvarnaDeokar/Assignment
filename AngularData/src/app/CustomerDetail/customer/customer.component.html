@@ -1,0 +1,69 @@
+<form #registrationform="ngForm">
+  <div class="container">
+    <div class="jumbotron">
+      <h1> User Registration</h1>
+      <hr>
+      <div class="row">
+        <div class="col-md-6" form-group>
+          <input type="hidden" class="form-control" [(ngModel)]="cservice.currentCustomer.empid">
+          <input placeholder="First Name" name="firstname" class="form-control"
+            [(ngModel)]="cservice.currentCustomer.firstname" required #firstname="ngModel"
+            [class.is-invalid]="firstname.invalid && firstname.touched">
+            <div *ngIf="email.errors && (email.invalid && email.touched)">
+              <small class="text-danger" *ngIf="email.errors.required">First Name is required field.</small>
+            </div>
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-md-6" form-group>
+          <input placeholder="Last Name" name="lastname" class="form-control"
+            [(ngModel)]="cservice.currentCustomer.lastname" required #lastname="ngModel"
+            [class.is-invalid]="lastname.invalid && lastname.touched">
+            <div *ngIf="email.errors && (email.invalid && email.touched)">
+              <small class="text-danger" *ngIf="email.errors.required">Last Name is required field.</small>
+            </div>
+        </div>
+      </div><br>
+      <div class="row">
+        <input placeholder="email" type="email" class="form-control" name="email"
+          [(ngModel)]="cservice.currentCustomer.email" required pattern="[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
+          #email="ngModel" [class.is-invalid]="email.invalid && email.touched">
+          <div *ngIf="email.errors && (email.invalid && email.touched)">
+            <small class="text-danger" *ngIf="email.errors.required">EmailId is required field.</small>
+            <small class="text-danger" *ngIf="email.errors.pattern">Enter valid emailId.</small>
+          </div>
+      </div><br>
+      <div class="row">
+        <div class="col-md-12">
+          <input placeholder="Address" name="address" class="form-control" [(ngModel)]="cservice.currentCustomer.address"
+            required #address="ngModel" [class.is-invalid]="address.invalid && address.touched">
+            <div *ngIf="email.errors && (email.invalid && email.touched)">
+              <small class="text-danger" *ngIf="email.errors.required">Address is required field.</small>
+            </div>
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-md-12">
+          <input placeholder="Mobile" name="mobile" class="form-control" [(ngModel)]="cservice.currentCustomer.mobile"
+            required #mobile="ngModel" [class.is-invalid]="mobile.invalid && mobile.touched">
+            <div *ngIf="email.errors && (email.invalid && email.touched)">
+              <small class="text-danger" *ngIf="email.errors.required">Contact details should be correct.</small>
+            </div>
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-md-12">
+          <input placeholder="City" name="city" class="form-control" [(ngModel)]="cservice.currentCustomer.city" required
+            #city="ngModel" [class.is-invalid]="city.invalid && city.touched">
+            <div *ngIf="email.errors && (email.invalid && email.touched)">
+              <small class="text-danger" *ngIf="email.errors.required">City is required field.</small>
+            </div>
+        </div>
+      </div><br>
+      <div class="col-md-6" form-group>
+        <button class="btn btn-success btn-block btn-lg"
+          (click)=" SaveAndUpdateCustomer(cservice.currentCustomer)">SAVE</button>
+      </div>
+    </div>
+  </div>
+</form>

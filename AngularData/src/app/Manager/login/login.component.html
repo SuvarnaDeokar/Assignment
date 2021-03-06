@@ -1,0 +1,28 @@
+<form #loginform="ngForm" (ngSubmit)="loginManager()">
+    <div class="main">
+    <div class="jumbotron">
+        <h2>User Login / Sign In</h2>
+    <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="manager.email" required 
+        pattern="[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" #email="ngModel"
+        [class.is-invalid]="email.invalid && email.touched">
+        <div *ngIf="email.errors && (email.invalid && email.touched)">
+          <small class="text-danger" *ngIf="email.errors.required">EmailId is required field.</small>
+          <small class="text-danger" *ngIf="email.errors.pattern">Enter valid emailId.</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="manager.password"
+        required #password="ngModel"
+        [class.is-invalid]="password.invalid && password.touched">
+        <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is required field</small>
+      </div>
+      <button [disabled]="loginform.form.invalid" type="submit" class="btn btn-info">Submit</button>
+      <br>
+      <small class = "float-right" [routerLink] = "['/mregistration']">New User ? Register here</small>
+    </div>
+    <small class="text-danger">{{msg}}</small>
+</div>
+</form>

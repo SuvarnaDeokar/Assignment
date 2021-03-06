@@ -1,0 +1,28 @@
+<button type="submit" id="registerbtn" class="btn btn-info" (click)="newregister()">Register</button>
+<div class="container">
+    <div class="jumbotron">
+        <h1>WelCome to Customer Details</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="table table-hover">
+                <tr *ngFor="let c of temp">
+                    <!-- <td>{{c.empid}}</td> -->
+                    <td>{{c.firstname}}</td>
+                    <td>{{c.lastname}}</td>
+                    <td>{{c.email}}</td>
+                    <td>{{c.address}}</td>
+                    <td>{{c.mobile}}</td>
+                    <td>{{c.city}}</td>
+                    <td>
+                        <a routerLink = "/UpdateCustomer">
+                         <button type="submit" class="btn btn-info" (click)="updateCustomer(c)">Update</button></a>
+                    </td>
+                    <td>
+                         <button type="submit" class="btn btn-danger" (click)="deleteData(c.empid)">Delete</button>
+                    </td>
+                </tr>
+            </div>
+        </div>
+    </div>
+</div>
